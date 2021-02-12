@@ -25,12 +25,16 @@ phases:
     commands:
       - chmod +x scripts/post-build.sh
       - yarn
+      - 
       - yarn build
       # - command
   post_build:
     commands:
       - chmod +x scripts/trim-node-modules.sh
+      - npm i -g node-prune
       - ./scripts/trim-node-modules.sh
+      - mkdir lambda
+      - cp -r node_modules  api config extensions package.json app.js lambda
 #reports:
   #report-name-or-arn:
     #files:
@@ -45,7 +49,7 @@ artifacts:
     # - location
   #name: $(date +%Y-%m-%d)
   discard-paths: no
-  base-directory: build
+  base-directory: lambda
 #cache:
   #paths:
     # - paths
