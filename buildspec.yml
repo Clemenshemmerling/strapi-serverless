@@ -18,12 +18,12 @@ version: 0.2
   #build-matrix:
   #build-graph:
 phases:
-  install:
-    - yarn 
+  #install: 
     #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
     #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
   build:
     commands:
+      - yarn
       - yarn build
       # - command
   post_build:
