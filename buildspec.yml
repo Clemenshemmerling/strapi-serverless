@@ -1,0 +1,51 @@
+version: 0.2
+
+#env:
+  #variables:
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+  #secrets-manager:
+     # key: secret-id:json-key:version-stage:version-id
+     # key: secret-id:json-key:version-stage:version-id
+  #exported-variables:
+     # - variable
+     # - variable
+  #git-credential-helper: yes
+#batch:
+  #fast-fail: true
+  #build-list:
+  #build-matrix:
+  #build-graph:
+phases:
+  install:
+    #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
+    #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
+  build:
+    commands:
+      - yarn build
+      # - command
+  post_build:
+    commands:
+      - chmod +x scripts/trim-node-modules.sh
+      - ./scripts/trim-node-modules.sh
+      - mkdir lambda
+      - cp -r node_modules  api config extensions package.json app.js lambda
+#reports:
+  #report-name-or-arn:
+    #files:
+      # - location
+      # - location
+    #base-directory: location
+    #discard-paths: yes
+    #file-format: JunitXml | CucumberJson
+artifacts:
+  files:
+    - '**/*'
+    # - location
+  #name: $(date +%Y-%m-%d)
+  discard-paths: no
+  base-directory: lambda
+#cache:
+  #paths:
+    # - paths
