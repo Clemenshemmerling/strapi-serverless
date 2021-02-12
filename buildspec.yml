@@ -31,8 +31,6 @@ phases:
     commands:
       - chmod +x scripts/trim-node-modules.sh
       - ./scripts/trim-node-modules.sh
-      - mkdir lambda
-      - cp -r node_modules  api config extensions package.json app.js lambda
 #reports:
   #report-name-or-arn:
     #files:
@@ -47,7 +45,7 @@ artifacts:
     # - location
   #name: $(date +%Y-%m-%d)
   discard-paths: no
-  base-directory: lambda
+  base-directory: build
 #cache:
   #paths:
     # - paths
