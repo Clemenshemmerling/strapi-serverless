@@ -23,6 +23,7 @@ phases:
     #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
   build:
     commands:
+      - chmod +x scripts/post-build.sh
       - yarn
       - yarn build
       # - command
